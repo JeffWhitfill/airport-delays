@@ -75,7 +75,7 @@ namespace AirportProgram
             {
                 foreach(var airport in airports)
                 {
-                    Console.WriteLine($"{airport.code}: {airport.name}");
+                    Console.WriteLine($"{airport.code}: {airport.name}  had {airport.statistics.flights.delayed} flight delays for a total of {airport.statistics.minutesDelayed.total} minutes");
                 }
             }
 
@@ -97,18 +97,22 @@ namespace AirportProgram
 
                 foreach (var airport in airports)
                 {
-                    Console.WriteLine($"    {airport.code}: {airport.name}");
+                    Console.WriteLine($"{airport.code ?? "null"}: {airport.name ?? "null"}  had {airport.statistics?.flights?.delayed ?? -1} flight delays for a total of {airport.statistics?.minutesDelayed?.total ?? -1} minutes");
                 }
                 Console.Write("Enter the code of the airport: ");
                 var airportCode = Console.ReadLine();
-
+                Console.Write("Enter the number of delays of the airport: ");
+               
                 var newAirport = new Airport
                 {
                     name = airportName,
-                    code = airportCode
+                    code = airportCode,
+                    
+                    
                 };
 
                 _airportRepository.Add(newAirport);
+
                 Console.WriteLine($"Airport {airportName} was added!");
             }
 
