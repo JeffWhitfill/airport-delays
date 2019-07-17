@@ -12,6 +12,7 @@ namespace AirportProgram
     {
         private readonly string _airportsFilePath;
 
+        // combine path with json file
         public AirportDatabase()
         {
             var folderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
@@ -23,6 +24,7 @@ namespace AirportProgram
 
         private void Load()
         {
+            // deserialize datafile
             if (File.Exists(_airportsFilePath))
             {
                 using (var reader = new StreamReader(_airportsFilePath))
@@ -35,6 +37,7 @@ namespace AirportProgram
 
         public void SaveChanges()
         {
+            //ssrialize new version of datafie
             var americanairlinesJson = JsonConvert.SerializeObject(Airports);
             var airportsFile = File.Create(_airportsFilePath);
             using (var writer = new StreamWriter(airportsFile))

@@ -15,6 +15,7 @@ namespace AirportProgram
             _airportDatabase = airportDatabase;
         }
 
+        //get the list of airports
         public List<Airport> Get()
         {
             return _airportDatabase.Airports;
@@ -24,7 +25,7 @@ namespace AirportProgram
         {
             return _airportDatabase.Airports.Single(c => c.id == id);
         }
-
+        // add airport to database and save database
         public void Add (Airport Airport)
         {
             if (_airportDatabase.Airports.Any())
@@ -40,6 +41,7 @@ namespace AirportProgram
             _airportDatabase.SaveChanges();
         }
 
+        // remove airport from database and save database
         public void Remove (int id)
         {
             var dbAirport = _airportDatabase.Airports.Single(c => c.id == id);

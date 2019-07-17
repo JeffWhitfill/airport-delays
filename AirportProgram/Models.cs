@@ -7,15 +7,6 @@ using Newtonsoft.Json;
 
 namespace AirportProgram
 {
-    public class AirportData
-    {
-        public Airport airport { get; set; }
-        public void example()
-        {
-            var d = new Statistics.NumDelays();
-           
-        }
-    }
     public class Airport
     {
         public int id { get; set; }
@@ -56,17 +47,6 @@ namespace AirportProgram
             public int total { get; set; }
             //public int nationalAviationSystem { get; set; }
         }
-    }
-    public class Time
-    {
-        public string label { get; set; }
-        public int year { get; set; }
-        public int month { get; set; }
-    }
-    public class Carrier : Airport
-    {
-        //public string code { get; set; }
-        //public string name { get; set; }
     }
 }
 
