@@ -78,6 +78,7 @@ namespace AirportProgram
         static void GetAllAirports()
         {
             var airports = _airportRepository.Get();
+            
 
             // check to see if datafile is empty
             if (!airports.Any())
@@ -87,10 +88,16 @@ namespace AirportProgram
             else
             // create line for each airport with their number of delays and the length of tthe delay
             {
-                foreach(var airport in airports)
+                foreach (var airport in airports)
                 {
-                    Console.WriteLine($"{airport.code}: {airport.name}  had {airport.statistics.flights.delayed} flight delays for a total of {airport.statistics.minutesDelayed.total} minutes");
+                    if (airport.statistics != null)
+                    {
+                        Console.WriteLine($"{airport.code}: {airport.name}  had {airport.statistics.flights.delayed} flight delays for a total of {airport.statistics.minutesDelayed.total} minutes");
+                    }
+                   
+                    
                 }
+                   
             }
 
             Clear();
